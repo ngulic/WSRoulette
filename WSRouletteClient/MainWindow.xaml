@@ -1,0 +1,250 @@
+﻿<Window x:Class="WSRouletteClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WSRouletteClient"
+        mc:Ignorable="d"
+        Title="CLIENT" Height="450" Width="800">
+    <Grid Background="DarkGreen">
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--VRSTICA 1 oz. 0-->
+
+        <!--CREDITS-->
+        <Label x:Name="lCredit" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource textBlocks1}"></Label>
+        <!--BET-->
+        <Label x:Name="lStava" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource textBlocks1}">0</Label>
+        <!--WIN-->
+        <Label x:Name="lWin" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource textBlocks1}">0</Label>
+        <!--WIN NUMBER-->
+        <TextBlock x:Name="tbWinNumb" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="2" Style="{StaticResource textBlocks2}"></TextBlock>
+        <!--LAST BET-->
+        <Label x:Name="lLastBet" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="2" Style="{StaticResource textBlocks1}">0</Label>
+        <!--LAST WIN-->
+        <Label x:Name="lLastWin" Grid.Row="0" Grid.Column="10" Grid.ColumnSpan="2" Style="{StaticResource textBlocks1}">0</Label>
+        <!--BET TIME / GAME TIME-->
+        <Label Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="2" Style="{StaticResource textBlocks1}">CLIENT</Label>
+
+        <!--WIN NUMBERS-->
+
+        <ListView x:Name="lwPrikazDobitnihStevil" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="8" Foreground="White" FontSize="20">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+        <Label Name="lizpiszst" Grid.Row="1"></Label>
+
+        <!--  ŠTEVILA  -->
+        <!--  0  -->
+        <Button x:Name="btn0" Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Background="Green" Style="{StaticResource buttons1}" Click="Btn0_Click"></Button>
+        <Label Name="l0" FontSize="20" Content="0" Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Background="Transparent" MouseLeftButtonDown="Btn0_Click" Style="{StaticResource label2}"></Label>
+        <!--  1  -->
+        <Button x:Name="btn1" Grid.Row="4" Grid.Column="1" Background="Red" Style="{StaticResource buttons1}" Click="Btn1_Click"></Button>
+        <Label Name="l1" FontSize="20" Content="1" Grid.Row="4" Grid.Column="1" Background="Transparent" MouseLeftButtonDown="Btn1_Click" Style="{StaticResource label2}"></Label>
+        <!--  2  -->
+        <Button x:Name="btn2" Grid.Row="3" Grid.Column="1" Background="Black" Style="{StaticResource buttons1}" Click="Btn2_Click"></Button>
+        <Label Name="l2" FontSize="20" Content="2" Grid.Row="3" Grid.Column="1" Background="Transparent" MouseLeftButtonDown="Btn2_Click" Style="{StaticResource label2}"></Label>
+        <!--  3  -->
+        <Button x:Name="btn3" Grid.Row="2" Grid.Column="1" Background="Red" Style="{StaticResource buttons1}" Click="Btn3_Click"></Button>
+        <Label Name="l3" FontSize="20" Content="3" Grid.Row="2" Grid.Column="1" Background="Transparent" MouseLeftButtonDown="Btn3_Click" Style="{StaticResource label2}"></Label>
+        <!--  4  -->
+        <Button x:Name="btn4" Grid.Row="4" Grid.Column="2" Background="Black" Style="{StaticResource buttons1}" Click="Btn4_Click"></Button>
+        <Label Name="l4" FontSize="20" Content="4" Grid.Row="4" Grid.Column="2" Background="Transparent" MouseLeftButtonDown="Btn4_Click" Style="{StaticResource label2}"></Label>
+        <!--  5  -->
+        <Button x:Name="btn5" Grid.Row="3" Grid.Column="2" Background="Red" Style="{StaticResource buttons1}" Click="Btn5_Click"></Button>
+        <Label Name="l5" FontSize="20" Content="5" Grid.Row="3" Grid.Column="2" Background="Transparent" MouseLeftButtonDown="Btn5_Click" Style="{StaticResource label2}"></Label>
+        <!--  6  -->
+        <Button x:Name="btn6" Grid.Row="2" Grid.Column="2" Background="Black" Style="{StaticResource buttons1}" Click="Btn6_Click"></Button>
+        <Label Name="l6" FontSize="20" Content="6" Grid.Row="2" Grid.Column="2" Background="Transparent" MouseLeftButtonDown="Btn6_Click" Style="{StaticResource label2}"></Label>
+        <!--  7  -->
+        <Button x:Name="btn7" Grid.Row="4" Grid.Column="3" Background="Red" Style="{StaticResource buttons1}" Click="Btn7_Click"></Button>
+        <Label Name="l7" FontSize="20" Content="7" Grid.Row="4" Grid.Column="3" Background="Transparent" MouseLeftButtonDown="Btn7_Click" Style="{StaticResource label2}"></Label>
+        <!--  8  -->
+        <Button x:Name="btn8" Grid.Row="3" Grid.Column="3" Background="Black" Style="{StaticResource buttons1}" Click="Btn8_Click"></Button>
+        <Label Name="l8" FontSize="20" Content="8" Grid.Row="3" Grid.Column="3" Background="Transparent" MouseLeftButtonDown="Btn8_Click" Style="{StaticResource label2}"></Label>
+        <!--  9  -->
+        <Button x:Name="btn9" Grid.Row="2" Grid.Column="3" Background="Red" Style="{StaticResource buttons1}" Click="Btn9_Click"></Button>
+        <Label Name="l9" FontSize="20" Content="9" Grid.Row="2" Grid.Column="3" Background="Transparent" MouseLeftButtonDown="Btn9_Click" Style="{StaticResource label2}"></Label>
+        <!--  10  -->
+        <Button x:Name="btn10" Content="10" Grid.Row="4" Grid.Column="4" Background="Black" Style="{StaticResource buttons1}"></Button>
+        <!--  11  -->
+        <Button x:Name="btn11" Content="11" Grid.Row="3" Grid.Column="4" Background="Black" Style="{StaticResource buttons1}"></Button>
+        <!--  12  -->
+        <Button x:Name="btn12" Content="12" Grid.Row="2" Grid.Column="4" Background="Red" Style="{StaticResource buttons1}"></Button>
+        <!--  13  -->
+        <Button x:Name="btn13" Content="13" Grid.Row="4" Grid.Column="5" Background="Black" Style="{StaticResource buttons1}"></Button>
+        <!--  14  -->
+        <Button x:Name="btn14" Content="14" Grid.Row="3" Grid.Column="5" Background="Red" Style="{StaticResource buttons1}"></Button>
+        <!--  15  -->
+        <Button x:Name="btn15" Content="15" Grid.Row="2" Grid.Column="5" Background="Black" Style="{StaticResource buttons1}"></Button>
+        <!--  16  -->
+        <Button x:Name="btn16" Content="16" Grid.Row="4" Grid.Column="6" Background="Red" Style="{StaticResource buttons1}"></Button>
+        <!--  17  -->
+        <Button x:Name="btn17" Content="17" Grid.Row="3" Grid.Column="6" Background="Black" Style="{StaticResource buttons1}"></Button>
+        <!--  18  -->
+        <Button x:Name="btn18" Content="18" Grid.Row="2" Grid.Column="6" Background="Red" Style="{StaticResource buttons1}"></Button>
+        <!--  19  -->
+        <Button x:Name="btn19" Content="19" Grid.Row="4" Grid.Column="7" Background="Red" Style="{StaticResource buttons1}"></Button>
+        <!--  20  -->
+        <Button x:Name="btn20" Content="20" Grid.Row="3" Grid.Column="7" Background="Black" Style="{StaticResource buttons1}"></Button>
+        <!--  21  -->
+        <Button x:Name="btn21" Content="21" Grid.Row="2" Grid.Column="7" Background="Red" Style="{StaticResource buttons1}"></Button>
+        <!--  22  -->
+        <Button x:Name="btn22" Content="22" Grid.Row="4" Grid.Column="8" Background="Black" Style="{StaticResource buttons1}"></Button>
+        <!--  23  -->
+        <Button x:Name="btn23" Content="23" Grid.Row="3" Grid.Column="8" Background="Red" Style="{StaticResource buttons1}"></Button>
+        <!--  24  -->
+        <Button x:Name="btn24" Content="24" Grid.Row="2" Grid.Column="8" Background="Black" Style="{StaticResource buttons1}"></Button>
+        <!--  25  -->
+        <Button x:Name="btn25" Content="25" Grid.Row="4" Grid.Column="9" Background="Red" Style="{StaticResource buttons1}"></Button>
+        <!--  26  -->
+        <Button x:Name="btn26" Content="26" Grid.Row="3" Grid.Column="9" Background="Black" Style="{StaticResource buttons1}"></Button>
+        <!--  27  -->
+        <Button x:Name="btn27" Content="27" Grid.Row="2" Grid.Column="9" Background="Red" Style="{StaticResource buttons1}"></Button>
+        <!--  28  -->
+        <Button x:Name="btn28" Content="28" Grid.Row="4" Grid.Column="10" Background="Black" Style="{StaticResource buttons1}"></Button>
+        <!--  29  -->
+        <Button x:Name="btn29" Content="29" Grid.Row="3" Grid.Column="10" Background="Black" Style="{StaticResource buttons1}"></Button>
+        <!--  30  -->
+        <Button x:Name="btn30" Content="30" Grid.Row="2" Grid.Column="10" Background="Red" Style="{StaticResource buttons1}"></Button>
+        <!--  31 -->
+        <Button x:Name="btn31" Content="31" Grid.Row="4" Grid.Column="11" Background="Black" Style="{StaticResource buttons1}"></Button>
+        <!--  32  -->
+        <Button x:Name="btn32" Content="32" Grid.Row="3" Grid.Column="11" Background="Red" Style="{StaticResource buttons1}"></Button>
+        <!--  33  -->
+        <Button x:Name="btn33" Content="33" Grid.Row="2" Grid.Column="11" Background="Black" Style="{StaticResource buttons1}"></Button>
+        <!--  34  -->
+        <Button x:Name="btn34" Content="34" Grid.Row="4" Grid.Column="12" Background="Red" Style="{StaticResource buttons1}"></Button>
+        <!--  35  -->
+        <Button x:Name="btn35" Content="35" Grid.Row="3" Grid.Column="12" Background="Black" Style="{StaticResource buttons1}"></Button>
+        <!--  36  -->
+        <Button x:Name="btn36" Content="36" Grid.Row="2" Grid.Column="12" Background="Red" Style="{StaticResource buttons1}"></Button>
+
+        <!-- 2 to 1 -->
+        <Button x:Name="btnTo1_1" Grid.Row="2" Grid.Column="13" Style="{StaticResource buttons3}" Click="BtnTo1_1_Click"></Button>
+        <Label Name="lTo1_1" FontSize="20" Content="2 to 1" Grid.Row="2" Grid.Column="13" Grid.ColumnSpan="4" Background="Transparent" MouseLeftButtonDown="BtnTo1_1_Click" Style="{StaticResource label2}" >
+            <Label.LayoutTransform>
+                <RotateTransform Angle="-90"/>
+            </Label.LayoutTransform>
+        </Label>
+
+        <Button x:Name="btnTo1_2" Grid.Row="3" Grid.Column="13" Style="{StaticResource buttons3}" Click="BtnTo1_2_Click"></Button>
+        <Label Name="lTo1_2" FontSize="20" Content="2 to 1" Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="4" Background="Transparent" MouseLeftButtonDown="BtnTo1_2_Click" Style="{StaticResource label2}">
+            <Label.LayoutTransform>
+                <RotateTransform Angle="-90"/>
+            </Label.LayoutTransform>
+        </Label>
+
+        <Button x:Name="btnTo1_3" Grid.Row="4" Grid.Column="13" Style="{StaticResource buttons3}" Click="BtnTo1_3_Click"></Button>
+        <Label Name="lTo1_3" FontSize="20" Content="2 to 1" Grid.Row="4" Grid.Column="13" Grid.ColumnSpan="4" Background="Transparent" MouseLeftButtonDown="BtnTo1_3_Click" Style="{StaticResource label2}">
+            <Label.LayoutTransform>
+                <RotateTransform Angle="-90"/>
+            </Label.LayoutTransform>
+        </Label>
+
+        <!-- VRSTICA 1-36 -->
+        <Button x:Name="btn1_12" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" Style="{StaticResource buttons2}" Click="Btn1_12_Click"></Button>
+        <Label Name="l1_12" FontSize="20" Content="1-12" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" Background="Transparent" MouseLeftButtonDown="Btn1_12_Click" Style="{StaticResource label2}"></Label>
+
+        <Button x:Name="btn13_24" Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="4" Style="{StaticResource buttons2}" Click="Btn13_24_Click"></Button>
+        <Label Name="l13_24" FontSize="20" Content="13-24" Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="4" Background="Transparent" MouseLeftButtonDown="Btn13_24_Click" Style="{StaticResource label2}"></Label>
+
+        <Button x:Name="btn25_36" Grid.Row="5" Grid.Column="9" Grid.ColumnSpan="4" Style="{StaticResource buttons2}" Click="Btn25_36_Click"></Button>
+        <Label Name="l25_36" FontSize="20" Content="25-36" Grid.Row="5" Grid.Column="9" Grid.ColumnSpan="4" Background="Transparent" MouseLeftButtonDown="Btn25_36_Click" Style="{StaticResource label2}"></Label>
+
+        <!-- VRSTICA 1-18 ODD RED itd -->
+        <Button x:Name="btn1_18" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource buttons2}" Click="Btn1_18_Click"></Button>
+        <Label Name="l1_18" FontSize="20" Content="1-18" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Background="Transparent" MouseLeftButtonDown="Btn1_18_Click" Style="{StaticResource label2}"></Label>
+
+        <Button x:Name="btnOdd" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2" Style="{StaticResource buttons2}" Click="BtnOdd_Click"></Button>
+        <Label Name="lOdd" FontSize="20" Content="ODD" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2" Background="Transparent" MouseLeftButtonDown="BtnOdd_Click" Style="{StaticResource label2}"></Label>
+
+        <Button x:Name="btnRed" Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="2" Style="{StaticResource buttons2}" Click="BtnRed_Click"></Button>
+        <Label Name="lRed" FontSize="20" Content="RED" Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="2" Background="Transparent" MouseLeftButtonDown="BtnRed_Click" Style="{StaticResource label2}"></Label>
+
+        <Button x:Name="btnBlack" Grid.Row="6" Grid.Column="7" Grid.ColumnSpan="2" Style="{StaticResource buttons2}" Click="BtnBlack_Click"></Button>
+        <Label Name="lBlack" FontSize="20" Content="BLACK" Grid.Row="6" Grid.Column="7" Grid.ColumnSpan="2" Background="Transparent" MouseLeftButtonDown="BtnBlack_Click" Style="{StaticResource label2}"></Label>
+
+        <Button x:Name="btnEven" Grid.Row="6" Grid.Column="9" Grid.ColumnSpan="2" Style="{StaticResource buttons2}" Click="BtnEven_Click"></Button>
+        <Label Name="lEven" FontSize="20" Content="EVEN" Grid.Row="6" Grid.Column="9" Grid.ColumnSpan="2" Background="Transparent" MouseLeftButtonDown="BtnEven_Click" Style="{StaticResource label2}"></Label>
+
+        <Button x:Name="btn19_36" Grid.Row="6" Grid.Column="11" Grid.ColumnSpan="2" Style="{StaticResource buttons2}" Click="Btn19_36_Click"></Button>
+        <Label Name="l19_36" FontSize="20" Content="19-36" Grid.Row="6" Grid.Column="11" Grid.ColumnSpan="2" Background="Transparent" MouseLeftButtonDown="Btn19_36_Click" Style="{StaticResource label2}"></Label>
+
+        <!--PROGRESS BAR-->
+        <ProgressBar x:Name="pbStatus" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="8" Background="Transparent"></ProgressBar>
+        <TextBox x:Name="txtText" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="6" Background="Transparent"  Foreground="Black" FontSize="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderThickness="0"></TextBox>
+
+
+
+        <!--COINS-->
+        <Button x:Name="btnCoin1" Grid.Row="8" Grid.Column="1"  Background="Transparent" Click="BtnCoin1_Click" BorderThickness="0">
+            <Image Source="images/chip1.png"/>
+        </Button>
+        <Label x:Name="lCoin1" FontWeight="Bold" Content="1" FontSize="20" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="BtnCoin1_Click" />
+
+        <Button x:Name="btnCoin2" Grid.Row="8" Grid.Column="2" Background="Transparent" Click="BtnCoin2_Click" BorderThickness="0">
+            <Image Source="images/chip5.png"/>
+        </Button>
+        <Label x:Name="lCoin2" FontWeight="Bold" Content="5" FontSize="20" Grid.Row="8" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="BtnCoin2_Click" />
+
+        <Button x:Name="btnCoin3" Grid.Row="8" Grid.Column="3" Background="Transparent" Click="BtnCoin3_Click" BorderThickness="0">
+            <Image Source="images/chip10.png"/>
+        </Button>
+        <Label x:Name="lCoin3" FontWeight="Bold" Content="10" FontSize="20" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="BtnCoin3_Click" />
+
+        <Button x:Name="btnCoin4" Grid.Row="8" Grid.Column="4" Background="Transparent" Click="BtnCoin4_Click" BorderThickness="0">
+            <Image Source="images/chip50.png"/>
+        </Button>
+        <Label x:Name="lCoin4" FontWeight="Bold" Content="50" FontSize="20" Grid.Row="8" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="BtnCoin4_Click" />
+
+        <Button x:Name="btnCoin5" Grid.Row="8" Grid.Column="5" Background="Transparent" Click="BtnCoin5_Click" BorderThickness="0">
+            <Image Source="images/chip100.png"/>
+        </Button>
+        <Label x:Name="lCoin5" FontWeight="Bold" Content="100" FontSize="20" Grid.Row="8" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="BtnCoin5_Click" />
+
+
+
+
+        <Label x:Name="lIzpis" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BorderThickness="0"></Label>
+
+        <!--um ja
+        
+        <TextBlock x:Name="prejlInt" Grid.Row="8" Grid.Column="8" Background="Aqua"></TextBlock>
+        
+
+        <TextBlock x:Name="testPrikat" Grid.ColumnSpan="4" Grid.Row="8" Grid.Column="8" Background="Aqua"></TextBlock>
+
+        -->
+
+    </Grid>
+</Window>
