@@ -52,6 +52,12 @@ namespace WSRouleteServer
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
             __ClientSockets = new List<SocketT2h>();
+
+            Timer = new DispatcherTimer();
+            Timer.Interval = new TimeSpan(0, 0, 1);
+            Timer.Tick += Timer_tick;
+            Timer.Start();
+            Progress_Bar(time);
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
@@ -61,7 +67,10 @@ namespace WSRouleteServer
         private void SetupServer()
         {
             txtServer.Text = "Setting up server . . .";
-            _serverSocket.Bind(new IPEndPoint(IPAddress.Any, 100));
+            _serverSocket.Bind(new IPEndPoint(IPAddress.Any, 3333));
+           // IPAddress ipAd = IPAddress.Parse("192.168.1.3");
+           // _serverSocket.Bind(new IPEndPoint(ipAd, 3333));
+             IpADress.Content= (new IPEndPoint(IPAddress.Any, 3333));
             _serverSocket.Listen(1);
             _serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);
         }
@@ -71,11 +80,12 @@ namespace WSRouleteServer
             Socket socket = _serverSocket.EndAccept(ar);
             __ClientSockets.Add(new SocketT2h(socket));
 
-            this.Dispatcher.Invoke(() =>
-            {
-                list1.Items.Add(socket.RemoteEndPoint.ToString());
-            });
+            /* this.Dispatcher.Invoke(() =>
+              {
+                  list1.Items.Add(socket.RemoteEndPoint.ToString());
+              });*/
 
+            socket.RemoteEndPoint.ToString();
 
             this.Dispatcher.Invoke(() =>
             {
@@ -127,7 +137,7 @@ namespace WSRouleteServer
                     string reponse = string.Empty;
 
 
-                    for (int i = 0; i < __ClientSockets.Count; i++)
+                    /*for (int i = 0; i < __ClientSockets.Count; i++)
                     {
 
                         if (socket.RemoteEndPoint.ToString().Equals(__ClientSockets[i]._Socket.RemoteEndPoint.ToString()))
@@ -138,7 +148,7 @@ namespace WSRouleteServer
                             });
 
                         }
-                    }
+                    }*/
 
                     if (text == "bye")
                     {
@@ -174,7 +184,7 @@ namespace WSRouleteServer
             socket.EndSend(AR);
         }
 
-        private void BtnSend_Click(object sender, RoutedEventArgs e)
+        /*private void BtnSend_Click(object sender, RoutedEventArgs e)
         {
             if (list1.SelectedItem != null)
             {
@@ -192,7 +202,7 @@ namespace WSRouleteServer
 
             }           
 
-        }
+        }*/
 
         private void PosljiStevilo(int x)
         {
@@ -206,9 +216,9 @@ namespace WSRouleteServer
             txtFile.WriteLine(randNumb);
             txtFile.Close();
 
-            for (int i = 0; i < list1.SelectedItems.Count; i++)
+            /*for (int i = 0; i < list1.SelectedItems.Count; i++)
             {
-                string t = list1.SelectedItems[i].ToString();
+                string t = list1.SelectedItems[i].ToString();*/
                 for (int j = 0; j < __ClientSockets.Count; j++)
                 {
                     //if (__ClientSockets[j]._Socket.Connected && __ClientSockets[j]._Name.Equals("@"+t))
@@ -216,7 +226,7 @@ namespace WSRouleteServer
                         Sendata(__ClientSockets[j]._Socket, randNumb.ToString());
                     }
                 }
-            }
+           // }
 
 
 
@@ -235,9 +245,9 @@ namespace WSRouleteServer
 
             if (time == checkTime)
             {
-                for (int i = 0; i < list1.SelectedItems.Count; i++)
+              /*  for (int i = 0; i < list1.SelectedItems.Count; i++)
                 {
-                    string t = list1.SelectedItems[i].ToString();
+                    string t = list1.SelectedItems[i].ToString();*/
                     for (int j = 0; j < __ClientSockets.Count; j++)
                     {
                         //if (__ClientSockets[j]._Socket.Connected && __ClientSockets[j]._Name.Equals("@"+t))
@@ -245,7 +255,7 @@ namespace WSRouleteServer
                             Sendata(__ClientSockets[j]._Socket, "START");
                         }
                     }
-                }
+                //}
             }
 
             if (time > 0)
@@ -255,9 +265,9 @@ namespace WSRouleteServer
                 {
                     pbStatus.Foreground = Brushes.Orange;
 
-                    for (int i = 0; i < list1.SelectedItems.Count; i++)
+                   /* for (int i = 0; i < list1.SelectedItems.Count; i++)
                     {
-                        string t = list1.SelectedItems[i].ToString();
+                        string t = list1.SelectedItems[i].ToString();*/
                         for (int j = 0; j < __ClientSockets.Count; j++)
                         {
                             //if (__ClientSockets[j]._Socket.Connected && __ClientSockets[j]._Name.Equals("@"+t))
@@ -265,7 +275,7 @@ namespace WSRouleteServer
                                 Sendata(__ClientSockets[j]._Socket, "END OF BETS");
                             }
                         }
-                    }
+                    //}
 
 
 

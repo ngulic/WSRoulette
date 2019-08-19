@@ -36,7 +36,7 @@ namespace WSRouletteClient
         int credit = 1000;
         int stanje = 0;
         string link = "";
-        int izbranCoin = 0;
+        int izbranCoin = 1;
         int stava = 0;
         int dobitek = 0;
         private DispatcherTimer Timer;
@@ -67,16 +67,22 @@ namespace WSRouletteClient
         {
             InitializeComponent();
 
-            LoopConnect();
+
             // SendLoop();
             //lCredit.Content = credit;
+            /*LoopConnect();
             _clientSocket.BeginReceive(receivedBuf, 0, receivedBuf.Length, SocketFlags.None, new AsyncCallback(ReceiveData), _clientSocket);
             byte[] buffer = Encoding.ASCII.GetBytes("povezan");
-            _clientSocket.Send(buffer);
+            _clientSocket.Send(buffer);*/
 
-
+            btnCoin1.Background = Brushes.White;
             lCredit.Content = credit;
+
+            
+
         }
+
+
         ObservableCollection<String> names = new ObservableCollection<String>();
         private void zgodovina()
         {
@@ -139,7 +145,7 @@ namespace WSRouletteClient
 
                     if (h == "END OF BETS")
                     {
-                        txtText.Text = "END OF BETS";
+                        txtText.Text = "NO MORE BETS";
                         pbStatus.Foreground = Brushes.Orange;
                         lWin.Content = "0";
 
@@ -149,18 +155,13 @@ namespace WSRouletteClient
                     {
                         zgodovina();
 
-                        txtText.Text = "BET TIME";
+                        txtText.Text = "PLACE YOUR BETS";
                         pbStatus.Foreground = Brushes.Yellow;
                         Progress_Bar(timer);
                         enableBets();
                     }
                     else
                     {
-
-
-
-
-
 
                         int i = Int32.Parse(h);
                         izpisCredita(i);//TEST
@@ -187,7 +188,7 @@ namespace WSRouletteClient
             lLastBet.Content = lastBet;
             lastWin = dobitek;
             lLastWin.Content = lastWin;
-            stava = 0;
+            stava = 1;
             lStava.Content = 0;
             dobitek = 0;
 
@@ -254,7 +255,7 @@ namespace WSRouletteClient
         }
         private void enableBets()
         {
-            izbranCoin = 0;
+            izbranCoin = 1;
             btnCoin1.IsEnabled = true;
             btnCoin2.IsEnabled = true;
             btnCoin3.IsEnabled = true;
@@ -300,12 +301,12 @@ private void SendLoop()
                 try
                 {
                     attempts++;
-                    _clientSocket.Connect(IPAddress.Loopback, 100);
+                    _clientSocket.Connect(IPAddress.Loopback, 3333);
                 }
                 catch (SocketException)
                 {
                     //Console.Clear();
-                    // txtServer.Text = ("Connection attempts: LoopConect " + attempts.ToString());
+                    txtText.Text = ("Connection attempts: LoopConect " + attempts.ToString());
                 }
             }
             // txtServer.Text = ("Connected! LoopConect");
@@ -839,26 +840,51 @@ private void SendLoop()
         private void BtnCoin1_Click(object sender, RoutedEventArgs e)
         {
             izbranCoin = 1;
+            btnCoin1.Background = Brushes.White;
+            btnCoin2.Background = Brushes.Transparent;
+            btnCoin3.Background = Brushes.Transparent;
+            btnCoin4.Background = Brushes.Transparent;
+            btnCoin5.Background = Brushes.Transparent;
         }
 
         private void BtnCoin2_Click(object sender, RoutedEventArgs e)
         {
             izbranCoin = 5;
+            btnCoin1.Background = Brushes.Transparent;
+            btnCoin2.Background = Brushes.White;
+            btnCoin3.Background = Brushes.Transparent;
+            btnCoin4.Background = Brushes.Transparent;
+            btnCoin5.Background = Brushes.Transparent;
         }
 
         private void BtnCoin3_Click(object sender, RoutedEventArgs e)
         {
             izbranCoin = 10;
+            btnCoin1.Background = Brushes.Transparent;
+            btnCoin2.Background = Brushes.Transparent;
+            btnCoin3.Background = Brushes.White;
+            btnCoin4.Background = Brushes.Transparent;
+            btnCoin5.Background = Brushes.Transparent;
         }
 
         private void BtnCoin4_Click(object sender, RoutedEventArgs e)
         {
             izbranCoin = 50;
+            btnCoin1.Background = Brushes.Transparent;
+            btnCoin2.Background = Brushes.Transparent;
+            btnCoin3.Background = Brushes.Transparent;
+            btnCoin4.Background = Brushes.White;
+            btnCoin5.Background = Brushes.Transparent;
         }
 
         private void BtnCoin5_Click(object sender, RoutedEventArgs e)
         {
             izbranCoin = 100;
+            btnCoin1.Background = Brushes.Transparent;
+            btnCoin2.Background = Brushes.Transparent;
+            btnCoin3.Background = Brushes.Transparent;
+            btnCoin4.Background = Brushes.Transparent;
+            btnCoin5.Background = Brushes.White;
         }
 
         private void Btn0_Click(object sender, RoutedEventArgs e)
@@ -1159,6 +1185,15 @@ private void SendLoop()
             pbStatus.BeginAnimation(ProgressBar.ValueProperty, doubleanimation);
 
         }
-                
+
+        private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            LoopConnect();
+            _clientSocket.BeginReceive(receivedBuf, 0, receivedBuf.Length, SocketFlags.None, new AsyncCallback(ReceiveData), _clientSocket);
+            byte[] buffer = Encoding.ASCII.GetBytes("povezan");
+            _clientSocket.Send(buffer);
+            client.IsEnabled = false;
+            client.Foreground = Brushes.White;
+        }
     }
 }
